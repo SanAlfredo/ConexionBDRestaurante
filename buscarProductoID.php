@@ -3,6 +3,7 @@
 include("conexion.php");
 
 //dentro de la ruta obtener el id
+$id = $_GET['id'];
 $result = array();
 $result['datos'] = array();
 $result['exito'] = "0";
@@ -10,7 +11,7 @@ $result['exito'] = "0";
 try {
 
     //realizar la consulta sql
-    $query = "SELECT * FROM productos";
+    $query = "SELECT * FROM productos WHERE id= '$id'";
     //guardar en resultados
     $response = mysqli_query($conn, $query);
     if (mysqli_num_rows($response) > 0) {

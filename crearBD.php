@@ -20,16 +20,23 @@ try {
         precio FLOAT
     )";
     mysqli_query($conn, $sql);
+    //crear tabla ventas
+    $sql = "CREATE TABLE IF NOT EXISTS ventas (
+        id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        cod_cliente INT(6) UNSIGNED,
+        fecha DATETIME,
+        FOREIGN KEY (cod_cliente) REFERENCES usuarios(id)
+    )";
+    mysqli_query($conn, $sql);
     //crear tabla pedidos
     $sql = "CREATE TABLE IF NOT EXISTS pedidos (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         cod_producto INT(6) UNSIGNED,
-        cod_cliente INT(6) UNSIGNED,
+        cod_venta INT(6) UNSIGNED,
         cantidad INT,
-        fecha DATETIME,
         precio_total FLOAT,
         FOREIGN KEY (cod_producto) REFERENCES productos(id),
-        FOREIGN KEY (cod_cliente) REFERENCES usuarios(id)
+        FOREIGN KEY (cod_venta) REFERENCES ventas(id)
     )";
     mysqli_query($conn, $sql);
     //crear usuarios iniciales
