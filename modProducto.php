@@ -2,11 +2,12 @@
 //conectamos a la base de datos
 include("conexion.php");
 
-//dentro de la ruta obtener el id
+//dentro de la ruta los datos
 $nombre = $_GET['nombre'];
 $descripcion = $_GET['descripcion'];
 $categoria = $_GET['categoria'];
 $precio = $_GET['precio'];
+$id=$_GET['id'];
 $result = array();
 $result['datos'] = array();
 $result['exito'] = "0";
@@ -14,13 +15,11 @@ $result['exito'] = "0";
 try {
 
     //realizar la consulta sql
-    $query = "INSERT INTO productos(nombre,descripcion,categoria,precio) VALUES ('$nombre','$descripcion',
-            '$categoria','$precio')";
+    $query = "UPDATE productos set nombre='$nombre',descripcion='$descripcion',
+            categoria='$categoria',precio='$precio' WHERE id='$id'";
     //guardar en resultados
     $response = mysqli_query($conn, $query);
     if ($response) {
-        $index['id'] = mysqli_insert_id($conn);
-        array_push($result['datos'], $index);
         $result['exito'] = "1";
     } else {
         $result['exito'] = "0";

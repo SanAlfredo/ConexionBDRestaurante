@@ -2,7 +2,6 @@
 //conectamos a la base de datos
 include("conexion.php");
 
-//dentro de la ruta obtener el id
 $result = array();
 $result['datos'] = array();
 $result['exito'] = "0";

@@ -2,7 +2,7 @@
 //conectamos a la base de datos
 include("conexion.php");
 
-//dentro de la ruta obtener el id
+//dentro de la ruta obtener el usuario
 $user = $_GET['usuario'];
 $result = array();
 $result['datos'] = array();
