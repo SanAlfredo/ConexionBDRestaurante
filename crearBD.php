@@ -25,6 +25,7 @@ try {
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         cod_cliente INT(6) UNSIGNED,
         fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+        pago BOOLEAN DEFAULT FALSE,
         FOREIGN KEY (cod_cliente) REFERENCES usuarios(id)
     )";
     mysqli_query($conn, $sql);

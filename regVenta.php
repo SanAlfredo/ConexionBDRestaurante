@@ -3,10 +3,7 @@
 include("conexion.php");
 
 //dentro la ruta
-$codigo1 = $_GET['codigo1'];
-$codigo2 = $_GET['codigo2'];
-$cantidad = $_GET['cantidad'];
-$precio = $_GET['precio'];
+$codigo = $_GET['codigo'];
 $result = array();
 $result['datos'] = array();
 $result['exito'] = "0";
@@ -14,8 +11,7 @@ $result['exito'] = "0";
 try {
 
     //realizar la consulta sql
-    $query = "INSERT INTO pedidos(cod_producto,cod_venta,cantidad,precio_total) VALUES ('$codigo1','$codigo2',
-            '$cantidad','$precio')";
+    $query = "INSERT INTO ventas(cod_cliente) VALUES ('$codigo')";
     //guardar en resultados
     $response = mysqli_query($conn, $query);
     if ($response) {
