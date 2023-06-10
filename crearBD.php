@@ -24,7 +24,7 @@ try {
     $sql = "CREATE TABLE IF NOT EXISTS ventas (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         cod_cliente INT(6) UNSIGNED,
-        fecha DATETIME,
+        fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
         FOREIGN KEY (cod_cliente) REFERENCES usuarios(id)
     )";
     mysqli_query($conn, $sql);

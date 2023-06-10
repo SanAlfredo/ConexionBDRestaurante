@@ -4,9 +4,9 @@ include("conexion.php");
 
 //dentro de la ruta los datos
 $nombre = $_GET['nombre'];
-$descripcion = $_GET['descripcion'];
-$categoria = $_GET['categoria'];
-$precio = $_GET['precio'];
+$usuario = $_GET['usuario'];
+$contra = $_GET['contra'];
+$tipo = $_GET['tipo'];
 $id = $_GET['id'];
 $result = array();
 $result['datos'] = array();
@@ -15,8 +15,8 @@ $result['exito'] = "0";
 try {
 
     //realizar la consulta sql
-    $query = "UPDATE productos set nombre='$nombre',descripcion='$descripcion',
-            categoria='$categoria',precio='$precio' WHERE id='$id'";
+    $query = "UPDATE usuarios set nombre='$nombre',usuario='$usuario',
+            contra='$contra',tipo='$tipo' WHERE id='$id'";
     //guardar en resultados
     $response = mysqli_query($conn, $query);
     if ($response) {
