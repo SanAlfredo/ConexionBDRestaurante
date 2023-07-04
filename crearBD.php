@@ -1,13 +1,17 @@
 <?php
 //declarar la conexion
 include("conexion.php");
+$password = '1234';
+$algo = "sha256";
+$key = "secret";
+$encriptado = hash_hmac($algo, $password, $key);
 try {
     //crear tabla usuarios
     $sql = "CREATE TABLE IF NOT EXISTS usuarios (
             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                     nombre VARCHAR(50),
                     usuario VARCHAR(30),
-                    contra VARCHAR(30),
+                    contra VARCHAR(200),
                     tipo INT(6)
         )";
     mysqli_query($conn, $sql);
@@ -42,10 +46,10 @@ try {
     mysqli_query($conn, $sql);
     //crear usuarios iniciales
     $sql = "INSERT INTO usuarios (id,nombre, usuario, contra,tipo) VALUES 
-        (1,'Administrador o gerente','admin','1234',1),
-        (2,'Alisson Bellot Cuba','alisson','1234',2),
-        (3,'Mariela Poma Andia','mariela','1234',2),
-        (4,'Jimmy Vladimir Mendez Condori','jimmy','1234',2)";
+        (1,'Administrador o gerente','admin','$encriptado',1),
+        (2,'Alisson Bellot Cuba','alisson','$encriptado',2),
+        (3,'Mariela Poma Andia','mariela','$encriptado',2),
+        (4,'Jimmy Vladimir Mendez Condori','jimmy','$encriptado',2)";
     mysqli_query($conn, $sql);
     //crear productos iniciales
     $sql = "INSERT INTO productos (id, nombre, descripcion, categoria, precio) VALUES 
